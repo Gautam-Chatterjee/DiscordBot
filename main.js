@@ -34,7 +34,11 @@ client.on('message', message =>{
     
     if(command === 'help'){
         client.commands.get('help').execute(message, args);
+        
     } 
+    else if(command === 'mokugay'){
+        message.channel.send('Not in my good christian server!')
+    }
     else{
         let location = ''
        const address = command
@@ -42,15 +46,18 @@ client.on('message', message =>{
         message.channel.send('Where?, provide an address needle dick')
 }
 else{
+  
   geocode(address,(error,{latitude,longitude,location}={})=>{
     time(geoTz(latitude,longitude),time =>{
-      message.channel.send((time))
+      message.channel.send(time)
     })
   if(error){
     console.log(error)
     return message.channel.send(error)
+    
     }
   message.channel.send(location)
+  
   
   forecast(latitude, longitude, (error, forecastData) => {
       if(error){
