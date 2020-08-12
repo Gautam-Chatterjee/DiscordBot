@@ -12,6 +12,7 @@
   "dependencies": {
     "discord.js": "^12.2.0",
     "fs": "0.0.1-security",
+    "geo-tz": "^6.0.0",
     "node-fetch": "^2.6.0",
     "request": "^2.88.2"
   }

@@ -1,5 +1,8 @@
 const geocode = require('./utils/geocode.js')
 const forecast = require('./utils/forecast.js')
+const time = require('./utils/time.js')
+const geoTz = require('geo-tz')
+
 
 const Discord = require('discord.js');
 const client = new Discord.Client();
@@ -40,9 +43,13 @@ client.on('message', message =>{
 }
 else{
   geocode(address,(error,{latitude,longitude,location}={})=>{
+    time(geoTz(latitude,longitude),time =>{
+      message.channel.send((time))
+    })
   if(error){
+    console.log(error)
     return message.channel.send(error)
-  }
+    }
   message.channel.send(location)
   
   forecast(latitude, longitude, (error, forecastData) => {
