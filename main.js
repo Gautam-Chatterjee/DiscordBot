@@ -27,6 +27,16 @@ client.once('ready', () => {
 });
  
 client.on('message', message =>{
+    if(message.content.toLowerCase().startsWith("pls rob") || (message.content.startsWith('pls steal'))){
+      message.channel.send("Are you saving up for a boob job?")
+    }  
+    if(message.content.toLowerCase().startsWith('pls kill')){
+      message.channel.send('LOL. do everyone a favour and kill yourself :axe:')
+    }
+    if(message.content.toLowerCase().startsWith('pls beg')){
+      message.channel.send('Why? spent everything on the boob job?')
+    }
+    
     if(!message.content.startsWith(prefix) || message.author.bot) return;
  
     const args = message.content.slice(prefix.length).split(/ +/);
@@ -39,6 +49,9 @@ client.on('message', message =>{
     else if(command === 'mokugay'){
         message.channel.send('Not in my good christian server!')
     }
+    else if(command ==='mokustraight'){
+      message.channel.send('Interested? drop a message to Mokushiroku#8180 :kissing_heart:')
+    }
     else{
         let location = ''
        const address = command
@@ -48,15 +61,16 @@ client.on('message', message =>{
 else{
   
   geocode(address,(error,{latitude,longitude,location}={})=>{
-    time(geoTz(latitude,longitude),time =>{
-      message.channel.send(time)
-    })
-  if(error){
-    console.log(error)
-    return message.channel.send(error)
     
-    }
+  if(error){
+    return message.channel.send(error)
+  }
+  else{
   message.channel.send(location)
+  time(geoTz(latitude,longitude),time =>{
+    message.channel.send(time)
+  })
+}
   
   
   forecast(latitude, longitude, (error, forecastData) => {
@@ -75,4 +89,4 @@ else{
 });
 
 
-client.login('NzQyMDQxMzgzNDM4NjQ3MzA3.XzAV5A.xazX2BqSpx7MO7cX9nmwhtyFYF0')
+client.login('NzQyMDQxMzgzNDM4NjQ3MzA3.XzAV5A.eP0hxt5V7BDW7P_ji-8EU0kfUUM')
