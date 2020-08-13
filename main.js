@@ -2,6 +2,7 @@ const geocode = require('./utils/geocode.js')
 const forecast = require('./utils/forecast.js')
 const time = require('./utils/time.js')
 const geoTz = require('geo-tz')
+const talkedRecently = new Set();
 
 
 const Discord = require('discord.js');
@@ -36,7 +37,9 @@ client.on('message', message =>{
     if(message.content.toLowerCase().startsWith('pls beg')){
       message.channel.send('Why? spent everything on the boob job?')
     }
-    
+    if (talkedRecently.has(message.author.id)) {
+      message.channel.send("Slow down!");
+} else {
     if(!message.content.startsWith(prefix) || message.author.bot) return;
  
     const args = message.content.slice(prefix.length).split(/ +/);
@@ -85,8 +88,15 @@ else{
 })
 }
     }
+    talkedRecently.add(message.author.id);
+        setTimeout(() => {
+          // Removes the user from the set after a minute
+          talkedRecently.delete(message.author.id);
+        }, 10000);
+    }
     
 });
 
 
-client.login('NzQyMDQxMzgzNDM4NjQ3MzA3.XzAV5A.eP0hxt5V7BDW7P_ji-8EU0kfUUM')
+
+client.login('NzQyMDQxMzgzNDM4NjQ3MzA3.XzAV5A.8j4PAMLEKV5a7wEmu0JuIUO_EyQ')
