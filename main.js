@@ -28,17 +28,9 @@ client.once('ready', () => {
 });
  
 client.on('message', message =>{
-    if(message.content.toLowerCase().startsWith("pls rob") || (message.content.startsWith('pls steal'))){
-      message.channel.send("Are you saving up for a boob job?")
-    }  
-    if(message.content.toLowerCase().startsWith('pls kill')){
-      message.channel.send('LOL. do everyone a favour and kill yourself :axe:')
-    }
-    if(message.content.toLowerCase().startsWith('pls beg')){
-      message.channel.send('Why? spent everything on the boob job?')
-    }
+   
     if (talkedRecently.has(message.author.id)) {
-      message.channel.send("Slow down!");
+      message.channel.send("Slow down! Try again after 10 seconds.");
 } else {
     if(!message.content.startsWith(prefix) || message.author.bot) return;
  
@@ -49,9 +41,7 @@ client.on('message', message =>{
         client.commands.get('help').execute(message, args);
         
     } 
-    else if(command === 'mokugay'){
-        message.channel.send('Not in my good christian server!')
-    }
+    
     else if(command ==='mokustraight'){
       message.channel.send('Interested? drop a message to Mokushiroku#8180 :kissing_heart:')
     }

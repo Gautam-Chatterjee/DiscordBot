@@ -11,12 +11,9 @@ const forecast = (latitude,longitude,callback) =>{
            callback('unable to find location',undefined)
       }
       else{
-        /*let a = ''
-        for(i=11;i<16;i++){
-          a = a + body.location.localtime[i];
-        }
-        callback('Local Time: '+a) */
-      callback(body.current.weather_descriptions[0]+'. It is currently ' +body.current.temperature+ ' degrees out. ' + 'It feels like ' + body.current.feelslike +' degrees')
+        let a = Math.floor(((parseInt(body.current.temperature)-32)*5)/9)
+        let b = Math.floor((parseInt(body.current.feelslike-32)*5)/9)
+      callback(body.current.weather_descriptions[0]+'. It is currently ' +String(a)+ ' degrees celsius out. ' + 'It feels like ' + String(b) +' degrees celsius')
       } 
     })
 }

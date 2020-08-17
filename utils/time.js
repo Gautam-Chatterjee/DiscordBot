@@ -5,7 +5,7 @@ const time = (address,callback)=>{
   const url = 'http://worldtimeapi.org/api/timezone/'+address
   request({url, json: true}, (error,{body}) => {
       if(error){
-          callback('Cannot connect')
+          callback('Cannot connect to WorldTime API')
       }
       else{
         let a =''
